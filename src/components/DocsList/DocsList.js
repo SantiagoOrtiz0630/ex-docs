@@ -1,0 +1,20 @@
+import React from 'react';
+import { StyleSheet, Text, View } from "react-native";
+import { Link } from "react-router-native";
+import { observer } from "mobx-react/native";
+
+import store from "../../stores/store";
+
+@observer export default class DocsList extends React.Component {
+  render() {
+    return (
+      <View>
+          {store.docs.list.map(doc => <Link 
+            key={doc.id}
+            to={`/doc/${doc.id}`}>
+            <Text>{doc.name}</Text>
+          </Link>)}
+      </View>
+    );
+  }
+}
